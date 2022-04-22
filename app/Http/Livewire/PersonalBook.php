@@ -9,8 +9,16 @@ use App\Models\PersonalBook as PersonalBookModel;
 
 class PersonalBook extends Component
 {
-    protected $listeners = ['deleted' => 'delete'];
+    public $show = false;
+    protected $listeners = [
+        'deleted' => 'delete',
+        'added' => 'store',
+        'showModal'=> 'show'
+    
+    
+    ];
     // protected $listeners = ['added' => 'store'];
+    // protected $listeners = ['showButton'];
     // public $name, $email, $user_id;
     // public $updateMode = false;
     public function render()
@@ -68,6 +76,9 @@ class PersonalBook extends Component
             session()->flash('message', 'Personal Book Deleted Successfully.');
         }
     }
+
+    public function show(){
+        $this->show = true;    }
 }
 // <?php
 
