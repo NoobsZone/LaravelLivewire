@@ -1,6 +1,6 @@
 <title>Livewire Dashboard - Forms</title>
-<form wire:submit.prevent="submit" >
-<div class="py-4">
+<form wire:submit.prevent="$emit('added')" >
+<div class="py-4">  
     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
         <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
             <li class="breadcrumb-item">
@@ -21,7 +21,7 @@
         </div>
         
         <div>
-            <button class="btn btn-outline-gray-600 d-inline-flex" >Submit</button>
+            <button class="btn btn-outline-gray-600 d-inline-flex" wire:click="$set('message', 'Hello')">Submit</button>
         </div>
     </div>
 </div>
@@ -35,143 +35,33 @@
                         <!-- Form -->
                         <div class="mb-3">
                             <label for="firstName">Name</label>
-                            <input type="text" class="form-control" id="name" value="" required>
+                            <input type="text" class="form-control" id="name" value="" required wire:model="name">
 
                         </div>
-                        <div class="mb-3">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="firstName">Phone</label>
-                            <input type="number" class="form-control" id="name" value="" required>
-
-                        </div>
-
-
                         
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         
-                        <div class="mb-3">
-                            <label for="firstName">Name</label>
-                            <input type="text" class="form-control" id="name" value="" required>
-
-                        </div>
+                       
                         <div class="mb-3">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" wire:model="email">
                         </div>
-                        <div class="mb-3">
-                            <label for="firstName">Phone</label>
-                            <input type="number" class="form-control" id="name" value="" required>
-
-                        </div>
+                        
                     </div>
 
                     <div class="col-lg-4 col-sm-6">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="firstName">Name</label>
-                            <input type="text" class="form-control" id="name" value="" required>
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="name" value="" required wire:model="address">
 
                         </div>
-                        <div class="mb-3">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="firstName">Phone</label>
-                            <input type="number" class="form-control" id="name" value="" required>
-
-                        </div>
-                    </div>
-                    <!-- <div class="col-lg-4 col-sm-6">
-                        <div class="mb-3">
-                            <label for="birthday">Birthday</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                                <input data-datepicker="" class="form-control" id="birthday" type="text"
-                                    placeholder="dd/mm/yyyy" required>
-                            </div>
-                        </div>
                         
-                        <div class="mb-3">
-                            <label for="disabledTextInput">Name</label>
-                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input"
-                                disabled>
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="my-1 me-2" for="country">Country</label>
-                            <select class="form-select" id="country" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-                        
-                    </div> -->
-                </div>
-                <!-- <div class="row mb-5 mb-lg-5">
-                    <div class="col-lg-3 col-md-6">
-                        Checkboxes
-                        <div class="mb-3">
-                            <span class="h6 fw-bold">Checkboxes Round</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
-                            <label class="form-check-label" for="defaultCheck10">
-                              Default checkbox
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck20" disabled>
-                            <label class="form-check-label" for="defaultCheck20">
-                              Disabled checkbox
-                            </label>
-                        </div> 
-                    </div>
-                    <div class="col-lg-3 col-sm-6 mt-4 mt-md-0">
-                        
-                        <fieldset>
-                            <legend class="h6">Radios</legend>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                  Default radio
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                <label class="form-check-label" for="exampleRadios2">
-                                  Second default radio
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-                                <label class="form-check-label" for="exampleRadios3">
-                                  Disabled radio
-                                </label>
-                              </div>
-                            
-                        </fieldset>
                     </div>
                     
-                </div> -->
+                </div>
+                
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ResetPasswordExample;
 use App\Http\Livewire\UpgradeToPro;
 use App\Http\Livewire\Users;
-
+use App\Http\Livewire\PersonalBook;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,4 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/forms', Forms::class)->name('forms');
     Route::get('/modals', Modals::class)->name('modals');
     Route::get('/typography', Typography::class)->name('typography');
+    Route::view('/personal', PersonalBook::class)->name('personal');
+    // Route::view('/user','livewire.home');
+    // Route::get('/personal-info-add',PersonalBook::class)->('personal-book');
 });
