@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/reset-password-example', ResetPasswordExample::class)->name('reset-password-example');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/transactions', Transactions::class)->name('transactions');
-    Route::get('/bootstrap-tables', BootstrapTables::class)->name('bootstrap-tables');
+    Route::get('/personal-book', BootstrapTables::class)->name('personal-book');
     Route::get('/lock', Lock::class)->name('lock');
     Route::get('/buttons', Buttons::class)->name('buttons');
     Route::get('/notifications', Notifications::class)->name('notifications');

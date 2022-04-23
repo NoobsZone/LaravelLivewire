@@ -297,7 +297,7 @@ Within the download you'll find the following directories and files:
 └── transactions.blade.php                      # Transactions page
 ├── 404.blade.php                               # Error 404 page
 ├── 500.blade.php                               # Error 500 page
-├── bootstrap-tables.blade.php                  # Bootstrap tables page                
+├── personal-book.blade.php                  # Bootstrap tables page                
 ```
 
 ## Browser Support

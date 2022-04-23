@@ -8,12 +8,14 @@ use App\Models\PersonalBook as PersonalBookModel;
 
 
 class PersonalBook extends Component
-{
+{   
+    public $name, $email, $phone;
+    public $updateMode = false;
     public $show = false;
     protected $listeners = [
         'deleted' => 'delete',
         'added' => 'store',
-        'showModal'=> 'show'
+        'showModal'=> 'showModelForm'
     
     
     ];
@@ -44,17 +46,17 @@ class PersonalBook extends Component
     }
     public function store()
     {
-        $this->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|phone',
-        ]);
+        // $this->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required|phone',
+        // ]);
         PersonalBookModel::create([
             'name' => $this->name,
             'email' => $this->email,
-            // 'phone' => $this->phone,
+            'phone' => $this->phone,
             // 'gender'=> $this->gender,
-            'address'=> $this->address,
+            // 'address'=> $this->address,
         ]);
 
         session()->flash('message', 'Personal Book Created Successfully.');
@@ -65,7 +67,7 @@ class PersonalBook extends Component
     }
     public function edit ($id){
         // echo 'Hello I am Edit';
-        dd('Hello');
+        // dd('Hello');
         // $this->emit('edit');
     }
     public function delete($id)
@@ -77,8 +79,12 @@ class PersonalBook extends Component
         }
     }
 
-    public function show(){
-        $this->show = true;    }
+    public function showModelForm(){
+        if($this->show = true){
+            return view('livewire.modalForm');
+        }    
+        
+    }
 }
 // <?php
 

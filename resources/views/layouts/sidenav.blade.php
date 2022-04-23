@@ -73,7 +73,7 @@
 
       <li class="nav-item">
         <span
-          class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
+          class="nav-link {{ Request::segment(1) !== 'personal-book' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
           data-bs-toggle="collapse" data-bs-target="#submenu-app">
           <span>
             <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -91,11 +91,11 @@
                 clip-rule="evenodd"></path>
             </svg></span>
         </span>
-        <div class="multi-level collapse {{ Request::segment(1) == 'bootstrap-tables' ? 'show' : '' }}" role="list"
+        <div class="multi-level collapse {{ Request::segment(1) == 'personal-book' ? 'show' : '' }}" role="list"
           id="submenu-app" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'bootstrap-tables' ? 'active' : '' }}">
-              <a class="nav-link" href="/bootstrap-tables">
+            <li class="nav-item {{ Request::segment(1) == 'personal-book' ? 'active' : '' }}">
+              <a class="nav-link" href="/personal-book">
                 <span class="sidebar-text">Personal Book</span>
               </a>
             </li>

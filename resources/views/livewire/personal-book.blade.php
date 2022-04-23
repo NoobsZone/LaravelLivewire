@@ -18,14 +18,52 @@
         </div>
         <!-- class="btn btn-outline-gray-600 d-inline-flex align-items-center" -->
         <div>
-            <a class="btn btn-outline-gray-600 d-inline-flex align-items-center"  data-toggle="modal" data-target="#exampleModal" wire:click="$emit('showModal','modalForm')">
-                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
-                Add New
-            </a>
+            <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add New
+    </button>
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Personal Info</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name" class="col-form-label" wire:model="name">Name:</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-form-label" wire:model="email">Email:</label>
+            <input type="email" class="form-control" id="email">
+            <!-- <textarea class="form-control" id="email"></textarea> -->
+          </div>
+          <div class="form-group">
+            <label for="phone" class="col-form-label" wire:model="phone">Phone:</label>
+            <input type="number" class="form-control" id="phone">
+            <!-- <textarea class="form-control" id="email"></textarea> -->
+          </div>
+          <!-- <div class="form-group">
+            <label for="address" class="col-form-label" wire:model="address">Address:</label>
+            <textarea class="form-control" id="address"></textarea>
+          </div> -->
+        </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" wire:click="$emit('added')" >Save</button>
+        </div>
+        </div>
+    </div>
+    </div>
         </div>
     </div>
 </div>
-
+<!-- <p>Hello!!</p> -->
 <div class="card border-0 shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
@@ -38,18 +76,20 @@
                         <th class="border-0">Phone</th>
                         <!-- <th class="border-0">Address</th> -->
                         <!-- <th class="border-0">Gender</th> -->
-                        <th class="border-0 rounded-end">Action</th>
+                        <th class="border-0 rounded-end" style="margin-right:50px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Item -->
                     @foreach($personal as $personals)
                     <tr>
+                        <!-- {{$personals}} -->
                         <td><a href="#" class="text-primary fw-bold">{{$loop-> index + 1}}</a> </td>
                         <td>
 
                             {{$personals->name}}
                         </td>
+                        
                         <td>
                             {{$personals->email}}
                         </td>
@@ -66,8 +106,8 @@
 
                             <div class="d-flex align-items-center">
                                 <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                    -->
-                                <button class="btn btn-primary btn-sm" wire:click="$emit('deleted({{$personals->id}})')">Edit</button> <br>
-                                <button wire:click="$emit('deleted',{{ $personals->id }})" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="button" class="btn btn-primary sm" style="margin-right:5px; text-align:center" wire:click="$emit('deleted',{{$personals->id}})">Edit</button> <br>
+                                <button type="button" wire:click="$emit('deleted',{{ $personals->id }})" class="btn btn-secondary sm">Delete</button>
                             </div>
                         </td>
                     </tr>

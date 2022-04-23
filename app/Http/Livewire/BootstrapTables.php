@@ -8,6 +8,6 @@ class BootstrapTables extends Component
 {
     public function render()
     {
-        return view('bootstrap-tables');
+        return view('personal-book');
     }
 }
